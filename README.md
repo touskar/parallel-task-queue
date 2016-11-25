@@ -9,6 +9,8 @@ Seq-queue takes the responsibility to make the asynchronous, unordered processin
 Parallel-task-queue is a FIFO task queue and we can push tasks as we wish, anytime(before the queue closed), anywhere(if we hold the queue instance). A task is known as a function and we can do anything in the function and just need to call `task.done()` to tell the queue current task has finished.
 
  * Tags: node.js
+ 
+ http://sidsonaidson.github.io/parallel-task-queue/
 
 ##Installation
 ```
