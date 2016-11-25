@@ -1,0 +1,30 @@
+{
+  "name": "parallel-task-queue",
+  "version": "1.0.0",
+  "description": "A simple tool to keep requests to be executed in order with configurable parallelism.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "task",
+    "queue",
+    "concurrency",
+    "parallelism",
+    "async"
+  ],
+  "author": "sidson_aidson",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "''"
+  }
+}
