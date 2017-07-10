@@ -38,7 +38,7 @@ for(let i = 0; i < 50;i++)
             // or task.error(error) to trigger promess rejection
         }, Math.floor(Math.random() * 1000));
     }).then(data => {
-        console.log(beResolved.message);
+        console.log(data.message);
     }).catch(TaskManager.TaskTimeoutError, (e) => {
             console.log(`Task Time out`)
     }).catch(e => {
