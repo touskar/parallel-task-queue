@@ -53,7 +53,7 @@ taskQueue.on(TaskManager.ALL_TASK_FINISHED_EVENT, () => {
 ```
 
 
-```
+``` javascript
 let TaskManager = require('parallel-task-queue');
  
 let taskQueue = new TaskManager.TaskQueue({
