@@ -6,7 +6,7 @@ Parallel-task-queue is simple tool to keep requests to be executed in order with
 As we known, Node.js has an event-driven architecture capable of asynchronous I/O  and  callbacks are unordered. But sometimes we may need the requests to be processed in order.
 Seq-queue takes the responsibility to make the asynchronous, unordered processing flow into serial and ordered.
 
-Parallel-task-queue is a FIFO task queue and we can push tasks as we wish, anytime(before the queue closed), anywhere(if we hold the queue instance). A task is known as a function and we can do anything in the function and just need to call `task.done()` to tell the queue current task has finished.
+Parallel-task-queue is a FIFO task queue and we can push tasks as we wish, anytime(before the queue closed), anywhere(if we hold the queue instance). A task is known as a function and we can do anything in the function and just need to call `task.done(data)` (`.then` will be called) to tell the queue current task has finished success fully or `task.error(error)` (`.catch will be called).
 
  * Tags: node.js
  
@@ -31,10 +31,14 @@ for(let i = 0; i < 50;i++)
 {
     taskQueue.push(task => {
         setTimeout(() => {
-            task.done();
+            let beResolved = {
+                message:'hello'
+            };
+            task.done(beResolved);
+            // or task.error(error) to trigger promess rejection
         }, Math.floor(Math.random() * 1000));
     }).then(data => {
-        console.log(`Task ${i} finished`);
+        console.log(beResolved.message);
     }).catch(TaskManager.TaskTimeoutError, (e) => {
             console.log(`Task Time out`)
     }).catch(e => {
@@ -46,6 +50,62 @@ taskQueue.on(TaskManager.ALL_TASK_FINISHED_EVENT, () => {
     console.log('All task finished')
 });
 
+```
+
+
+```
+let TaskManager = require('parallel-task-queue');
+ 
+let taskQueue = new TaskManager.TaskQueue({
+    globalTimeout:1000,
+    timeBeforeClose:2000,
+    paralleleTask:1
+});
+ 
+taskQueue.on(TaskManager.ALL_TASK_FINISHED_EVENT, () => {
+    console.log('All task finished')
+});
+ 
+taskQueue.push(task => {
+        setTimeout(() => {
+            task.done();
+        }, Math.floor(Math.random() * 1000));
+    }).then(() => {
+        console.log(`Task ${i} finished`);
+    }).catch(TaskManager.TaskTimeoutError, (e) => {
+            console.log(`Task Time out`)
+    }).catch(e => {
+        console.log(e)
+    })
+ 
+for(let i = 0; i < 50;i++)
+{
+    taskQueue.push(task => {
+        setTimeout(() => {
+            task.done();
+        }, Math.floor(Math.random() * 1000));
+    }).then(() => {
+        console.log(`Task ${i} finished`);
+    }).catch(TaskManager.TaskTimeoutError, (e) => {
+            console.log(`Task Time out`)
+    }).catch(e => {
+        console.log(e)
+    })
+}
+ 
+taskQueue.push(task => {
+ setTimeout(() => {
+            task.done();
+   }, Math.floor(Math.random() * 1000));
+    }).then(() => {
+        console.log(`Task ${i} finished`);
+    }).catch(TaskManager.TaskTimeoutError, (e) => {
+            console.log(`Task Time out`)
+    }).catch(e => {
+        console.log(e)
+    })
+ 
+ 
 ```
 
 ##API
