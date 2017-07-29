@@ -1,6 +1,6 @@
 {
   "name": "parallel-task-queue",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "description": "A simple tool to keep requests to be executed in order with configurable parallelism.",
   "main": "index.js",
   "directories": {
