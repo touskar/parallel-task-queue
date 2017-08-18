@@ -6,7 +6,7 @@ let uuid = TaskManager.uuid;
 let taskQueue = new TaskManager.TaskQueue({
     globalTimeout:3000,
     timeBeforeClose:2000,
-    paralleleTask:5
+    paralleleTask:50
 });
 
 
@@ -18,7 +18,7 @@ let repeat = (value, len) => {
     return a;
 };
 
-let imgList = repeat('http://placehold.it/500x500', 10);
+let imgList = repeat('http://placehold.it/500x500', 30000);
 let wget = require('node-wget');
 let dw = 0;
 

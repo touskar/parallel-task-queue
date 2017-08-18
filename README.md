@@ -148,7 +148,45 @@ TaskQueue has many life cycle with these value:
 ### `TASK_FINSHED_STATUS`
 
 ## Getter
-## `TaskQueue.globalTimeout` - Number
-## `TaskQueue.status`
-## `TaskQueue.closed` - Boolean - if queue is closed
-## `TaskQueue.timeBeforeClose`
+
+
+``` javascript
+
+    get globalTimeout() {
+        
+    },
+    get taskQueue() {
+        
+    },
+    get alreadyFinishedTask() {
+       
+    },
+    get timeoutedTask(){
+        
+    },
+    get status() {
+        
+    },
+    get begined() {
+        
+    },
+    get allFinished() {
+        
+    },
+    get closed() {
+        
+    },
+    get parallelTask() {
+        
+    },
+    get runningTaskLengh() {
+        
+    },
+    get timeBeforeClose() {
+        
+    },
+    get timeoutId() {
+        
+    }
+
+```
