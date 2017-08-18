@@ -1,6 +1,5 @@
 {
   "name": "parallel-task-queue",
-  "version": "2.0.1",
   "description": "A simple tool to keep requests to be executed in order with configurable parallelism.",
   "main": "index.js",
   "directories": {
@@ -26,5 +25,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/sidsonAidson/parallel-task-queue.git"
-  }
+  },
+  "version": "2.1.0"
 }
